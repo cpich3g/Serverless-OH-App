@@ -18,8 +18,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     database = client.get_database_client(DATABASE_ID.value)
     container = database.get_container_client(CONTAINER_ID.value)
     
-    req_body = req.get_json()
-    userId = req_body['userId']
+    userId = req.params.get('userId')
     
     ratings = list(container.query_items(query="SELECT * FROM r WHERE r.userId = @Id", parameters=[{"name":"@Id", "value":userId}],enable_cross_partition_query=True))
     
