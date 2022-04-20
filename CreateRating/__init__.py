@@ -15,10 +15,6 @@ import os
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-# HOST = os.environ['HOST']
-# MASTER_KEY = os.environ['MASTER_KEY']
-# DATABASE_ID = os.environ['DATABASE']
-# CONTAINER_ID = os.environ['CONTAINER']
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -60,10 +56,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(f"Invalid request body: {err}", status_code = 404)
     # except jsonschema.ValidationError as err:
         # return func.HttpResponse(f"Request Body is not as per schema: {err}", status_code = 404)
-    
-    # rating = req_body['rating']
-    # if rating > 5 or rating < 0:
-    #     return func.HttpResponse(f"Rating should be between 0 and 5", status_code = 404)
+
     
     userId = req_body['userId']
     print(userId)

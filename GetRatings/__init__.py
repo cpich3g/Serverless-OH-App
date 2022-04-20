@@ -27,7 +27,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(json.dumps(ratings, indent=True))
     else:
         return func.HttpResponse(
-            "CANNOT FIND RATING",
+            "User Cannot be found or User does not have any ratings",
             status_code=404
         )
 
