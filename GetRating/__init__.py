@@ -7,10 +7,6 @@ import os
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-# HOST = os.environ['HOST']
-# MASTER_KEY = os.environ['MASTER_KEY']
-# DATABASE_ID = os.environ['DATABASE']
-# CONTAINER_ID = os.environ['CONTAINER']
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     credentials = DefaultAzureCredential()
@@ -41,7 +37,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(json.dumps(rating[0], indent=True))
     else:
         return func.HttpResponse(
-            "CANNOT FIND RATING",
+            "Rating ID seems to be wrong",
             status_code=404
         )
 
